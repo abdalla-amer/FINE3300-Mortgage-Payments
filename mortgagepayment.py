@@ -6,7 +6,7 @@ def mortgage_payments(principal, rate, amortization):
     :param amortization: Amortization period in years (int)
     :return: Tuple containing monthly, semi-monthly, bi-weekly, weekly, rapid bi-weekly, and rapid weekly payments
     """
-    # Annual quoted interest rate to decimal
+    # Annual quoted interest rate in decimals
     rq = rate / 100
     
     # Total number of payments for monthly, semi-monthly, bi-weekly, and weekly
@@ -15,13 +15,13 @@ def mortgage_payments(principal, rate, amortization):
     n_bi_weekly = amortization * 26
     n_weekly = amortization * 52
     
-    # Calculate the periodic interest rates
+    # Periodic interest rates
     r_monthly = (1 + rq / 2) ** (2/12) - 1
     r_semi_monthly = (1 + rq / 2) ** (2/24) - 1
     r_bi_weekly = (1 + rq / 2) ** (2/26) - 1
     r_weekly = (1 + rq / 2) ** (2/52) - 1
     
-    # Calculate payments using PV (present value) of annuity formula
+    # Payments using PV (present value) of annuity formula
     def annuity_payment(principal, r, n):
         return principal * (r / (1 - (1 + r) ** -n)) if r > 0 else principal / n
     
@@ -42,7 +42,7 @@ principal = float(input("Enter the principal amount: "))
 rate = float(input("Enter the quoted interest rate (e.g., 5.5 for 5.5%): "))
 amortization = int(input("Enter the amortization period in years: "))
 
-# Calculate payments
+# Payments Calculation
 payments = mortgage_payments(principal, rate, amortization)
 
 # Display results
